@@ -7,11 +7,12 @@ class HttpClient
 {
 
     protected $token;
+    const EVENTBRITE_APIv3_BASE = "https://www.eventbriteapi.com/v3"
 
     /**
      * Constructor.
      *
-     * @param string $token the user's auth token. 
+     * @param string $token the user's auth token.
      */
     public function __construct($token)
     {
@@ -49,9 +50,9 @@ class HttpClient
                 'content'=>$data,
                 'ignore_errors'=>true
             )
-        ); 
+        );
 
-        $url = 'https://www.eventbriteapi.com/v3' . $path . '?token=' . $this->token ;
+        $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token ;
 
         $context  = stream_context_create($options);
 
@@ -63,4 +64,3 @@ class HttpClient
 
     }
 }
-?>

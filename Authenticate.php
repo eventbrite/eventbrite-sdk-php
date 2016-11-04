@@ -1,21 +1,19 @@
 <?php
 
-function CreateAuthorizeUrl($client_key)
-{
-	$authorize_url = 'www.eventbrite.com/oauth/authorize?response_type=code&client_id=' . $client_key;
+define("EVENTBRITE_OAUTH_BASE", "https://www.eventbrite.com/oauth/");
 
-	return $authorize_url;
+function createAuthorizeUrl($client_key)
+{
+	return EVENTBRITE_OAUTH_BASE . 'authorize?response_type=code&client_id=' . $client_key;
 }
 
-function Handshake($code, $client_secret, $app_key)
+function handshake($code, $client_secret, $app_key)
 {
 	$post_args = array('code'=>$code,
 		               'client_secret'=>$client_secret,
 		               'client_id'=>$app_key,
 		               'grant_type'=>'authorization_code');
 	$data = http_build_query($post_args);
-
-	var_dump($data);
 
     $options = array(
         'http'=>array(
@@ -24,9 +22,9 @@ function Handshake($code, $client_secret, $app_key)
             'content'=>$data,
             'ignore_errors'=>true
         )
-    ); 
+    );
 
-    $url = 'https://www.eventbrite.com/oauth/token';
+    $url = EVENTBRITE_OAUTH_BASE . 'token';
 
     $context  = stream_context_create($options);
 
