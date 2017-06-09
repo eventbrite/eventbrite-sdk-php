@@ -1,12 +1,6 @@
 <?php
 
 require_once('AccessMethods.php');
-
-/**
- * Http client used to perform requests on Eventbrite API.
- */
-
-require_once('AccessMethods.php');
 /**
  * Http client used to perform requests on Eventbrite API.
  */
