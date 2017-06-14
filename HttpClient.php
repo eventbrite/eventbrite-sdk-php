@@ -47,10 +47,13 @@ class HttpClient extends AccessMethods
             'http'=>array(
                 'method'=>$httpMethod,
                 'header'=>"content-type: application/json\r\n",
-                'content'=>$data,
                 'ignore_errors'=>true
             )
         );
+
+        if ($httpMethod == 'POST') {
+            $options['http']['content'] = $data;
+        }
 
         $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
 
