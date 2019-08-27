@@ -11,8 +11,8 @@ class AccessMethods
 *        Returns a list of :format:`category` as ``categories``, including
 *        subcategories nested.
 */
-public function get_categories($expand=array()) {
-    return $this->get(sprintf("/categories/"), $expand=$expand);
+public function get_categories($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/categories/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -21,8 +21,8 @@ public function get_categories($expand=array()) {
 * GET /categories/:id/
 *        Gets a :format:`category` by ID as ``category``.
 */
-public function get_category($id, $expand=array()) {
-    return $this->get(sprintf("/categories/%s/", $id), $expand=$expand);
+public function get_category($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/categories/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -31,8 +31,8 @@ public function get_category($id, $expand=array()) {
 * GET /subcategories/
 *        Returns a list of :format:`subcategory` as ``subcategories``.
 */
-public function get_subcategories($expand=array()) {
-    return $this->get(sprintf("/subcategories/"), $expand=$expand);
+public function get_subcategories($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/subcategories/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -41,18 +41,18 @@ public function get_subcategories($expand=array()) {
 * GET /subcategories/:id/
 *        Gets a :format:`subcategory` by ID as ``subcategory``.
 */
-public function get_subcategory($id, $expand=array()) {
-    return $this->get(sprintf("/subcategories/%s/", $id), $expand=$expand);
+public function get_subcategory($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/subcategories/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
 /**
 * get_event_search
-* GET /events/search/ 
+* GET /events/search/
 *        Allows you to retrieve a paginated response of public :format:`event` objects from across Eventbrite’s directory, regardless of which user owns the event.
 */
-public function get_event_search($expand=array()) {
-    return $this->get(sprintf("/events/search"), $expand=$expand);
+public function get_event_search($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/search"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -77,8 +77,8 @@ public function post_events($data=array()) {
 *        of a specific event within an Eventbrite account. Does not support fetching a repeating event series parent
 *        (see :ref:`get-series-by-id`).
 */
-public function get_event($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/", $id), $expand=$expand);
+public function get_event($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -171,8 +171,8 @@ public function delete_event($id, $data=array()) {
 * GET /events/:id/display_settings/
 *        Retrieves the display settings for an event.
 */
-public function get_event_display_settings($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/display_settings/", $id), $expand=$expand);
+public function get_event_display_settings($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/display_settings/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -192,8 +192,8 @@ public function post_event_display_settings($id, $data=array()) {
 *        Returns a :ref:`paginated <pagination>` response with a key of
 *        ``ticket_classes``, containing a list of :format:`ticket_class`.
 */
-public function get_event_ticket_classes($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/ticket_classes/", $id), $expand=$expand);
+public function get_event_ticket_classes($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/ticket_classes/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -214,8 +214,8 @@ public function post_event_ticket_classes($id, $data=array()) {
 *        Gets and returns a single :format:`ticket_class` by ID, as the key
 *        ``ticket_class``.
 */
-public function get_event_ticket_class($id, $ticket_class_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/ticket_classes/%s/", $id, $ticket_class_id), $expand=$expand);
+public function get_event_ticket_class($id, $ticket_class_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/ticket_classes/%s/", $id, $ticket_class_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -244,8 +244,8 @@ public function delete_event_ticket_class($id, $ticket_class_id, $data=array()) 
 * GET /events/:id/canned_questions/
 *        This endpoint returns canned questions of a single event (examples: first name, last name, company, prefix, etc.). This endpoint will return :format:`question`.
 */
-public function get_event_canned_questions($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/canned_questions/", $id), $expand=$expand);
+public function get_event_canned_questions($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/canned_questions/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -257,8 +257,8 @@ public function get_event_canned_questions($id, $expand=array()) {
 *        custom information is collected and available per event.
 *        This endpoint will return :format:`question`.
 */
-public function get_event_questions($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/questions/", $id), $expand=$expand);
+public function get_event_questions($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/questions/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -267,8 +267,8 @@ public function get_event_questions($id, $expand=array()) {
 * GET /events/:id/questions/:question_id/
 *        This endpoint will return :format:`question` for a specific question id.
 */
-public function get_event_question($id, $question_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/questions/%s/", $id, $question_id), $expand=$expand);
+public function get_event_question($id, $question_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/questions/%s/", $id, $question_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -277,8 +277,8 @@ public function get_event_question($id, $question_id, $expand=array()) {
 * GET /events/:id/attendees/
 *        Returns a :ref:`paginated <pagination>` response with a key of ``attendees``, containing a list of :format:`attendee`.
 */
-public function get_event_attendees($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/attendees/", $id), $expand=$expand);
+public function get_event_attendees($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/attendees/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -287,8 +287,8 @@ public function get_event_attendees($id, $expand=array()) {
 * GET /events/:id/attendees/:attendee_id/
 *        Returns a single :format:`attendee` by ID, as the key ``attendee``.
 */
-public function get_event_attendee($id, $attendee_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/attendees/%s/", $id, $attendee_id), $expand=$expand);
+public function get_event_attendee($id, $attendee_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/attendees/%s/", $id, $attendee_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -297,8 +297,8 @@ public function get_event_attendee($id, $attendee_id, $expand=array()) {
 * GET /events/:id/orders/
 *        Returns a :ref:`paginated <pagination>` response with a key of ``orders``, containing a list of :format:`order` against this event.
 */
-public function get_event_orders($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/orders/", $id), $expand=$expand);
+public function get_event_orders($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/orders/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -310,8 +310,8 @@ public function get_event_orders($id, $expand=array()) {
 *        field_error event_id NOT_FOUND
 *        The event id you are attempting to use does not exist.
 */
-public function get_event_discounts($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/discounts/", $id), $expand=$expand);
+public function get_event_discounts($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/discounts/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -330,8 +330,8 @@ public function post_event_discounts($id, $data=array()) {
 * GET /events/:id/discounts/:discount_id/
 *        Gets a :format:`discount` by ID as the key ``discount``.
 */
-public function get_event_discount($id, $discount_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/discounts/%s/", $id, $discount_id), $expand=$expand);
+public function get_event_discount($id, $discount_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/discounts/%s/", $id, $discount_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -351,8 +351,8 @@ public function post_event_discount($id, $discount_id, $data=array()) {
 *        Returns a :ref:`paginated <pagination>` response with a key of ``discounts``, containing a list of public :format:`discounts <discount>` available on this event.
 *        Note that public discounts and discounts have exactly the same form and structure; they're just namespaced separately, and public ones (and the public GET endpoints) are visible to anyone who can see the event.
 */
-public function get_event_public_discounts($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/public_discounts/", $id), $expand=$expand);
+public function get_event_public_discounts($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/public_discounts/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -371,8 +371,8 @@ public function post_event_public_discounts($id, $data=array()) {
 * GET /events/:id/public_discounts/:discount_id/
 *        Gets a public :format:`discount` by ID as the key ``discount``.
 */
-public function get_event_public_discount($id, $discount_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/public_discounts/%s/", $id, $discount_id), $expand=$expand);
+public function get_event_public_discount($id, $discount_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/public_discounts/%s/", $id, $discount_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -401,8 +401,8 @@ public function delete_event_public_discount($id, $discount_id, $data=array()) {
 * GET /events/:id/access_codes/
 *        Returns a :ref:`paginated <pagination>` response with a key of ``access_codes``, containing a list of :format:`access_codes <access_code>` available on this event.
 */
-public function get_event_access_codes($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/access_codes/", $id), $expand=$expand);
+public function get_event_access_codes($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/access_codes/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -421,8 +421,8 @@ public function post_event_access_codes($id, $data=array()) {
 * GET /events/:id/access_codes/:access_code_id/
 *        Gets a :format:`access_code` by ID as the key ``access_code``.
 */
-public function get_event_access_code($id, $access_code_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/access_codes/%s/", $id, $access_code_id), $expand=$expand);
+public function get_event_access_code($id, $access_code_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/access_codes/%s/", $id, $access_code_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -442,8 +442,8 @@ public function post_event_access_code($id, $access_code_id, $data=array()) {
 * GET /events/:id/transfers/
 *        Returns a list of :format:`transfers` for the event.
 */
-public function get_event_transfers($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/transfers/", $id), $expand=$expand);
+public function get_event_transfers($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/transfers/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -452,8 +452,8 @@ public function get_event_transfers($id, $expand=array()) {
 * GET /events/:id/teams/
 *        Returns a list of :format:`teams` for the event.
 */
-public function get_event_teams($id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/teams/", $id), $expand=$expand);
+public function get_event_teams($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/teams/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -462,8 +462,8 @@ public function get_event_teams($id, $expand=array()) {
 * GET /events/:id/teams/:team_id/
 *        Returns information for a single :format:`teams`.
 */
-public function get_event_team($id, $team_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/teams/%s/", $id, $team_id), $expand=$expand);
+public function get_event_team($id, $team_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/teams/%s/", $id, $team_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -472,8 +472,8 @@ public function get_event_team($id, $team_id, $expand=array()) {
 * GET /events/:id/teams/:team_id/attendees/
 *        Returns :format:`attendees` for a single :format:`teams`.
 */
-public function get_event_teams_attendees($id, $team_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/teams/%s/attendees/", $id, $team_id), $expand=$expand);
+public function get_event_teams_attendees($id, $team_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/teams/%s/attendees/", $id, $team_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -494,8 +494,8 @@ public function post_series($data=array()) {
 *        Returns a repeating event series parent object for the specified repeating event series.
 *        .. _post-series-by-id:
 */
-public function get_one_series($id, $expand=array()) {
-    return $this->get(sprintf("/series/%s/", $id), $expand=$expand);
+public function get_one_series($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/series/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -598,8 +598,8 @@ public function delete_one_series($id, $data=array()) {
 *        Returns all of the events that belong to this repeating event series.
 *        .. _post-series-dates:
 */
-public function get_series_events($id, $expand=array()) {
-    return $this->get(sprintf("/series/%s/events/", $id), $expand=$expand);
+public function get_series_events($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/series/%s/events/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -619,8 +619,8 @@ public function post_series_events($id, $data=array()) {
 * GET /formats/
 *        Returns a list of :format:`format` as ``formats``.
 */
-public function get_formatss($expand=array()) {
-    return $this->get(sprintf("/formats/"), $expand=$expand);
+public function get_formatss($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/formats/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -628,8 +628,8 @@ public function get_formatss($expand=array()) {
 * get_formats
 * GET /formats/:id/
 *        Gets a :format:`format` by ID as ``format``.*/
-public function get_formats($id, $expand=array()) {
-    return $this->get(sprintf("/formats/%s/", $id), $expand=$expand);
+public function get_formats($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/formats/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -639,8 +639,8 @@ public function get_formats($id, $expand=array()) {
 *        Return an :format:`image` for a given id.
 *        .. _get-media-upload:
 */
-public function get_media($id, $expand=array()) {
-    return $this->get(sprintf("/media/%s/", $id), $expand=$expand);
+public function get_media($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/media/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -650,8 +650,8 @@ public function get_media($id, $expand=array()) {
 *        See :ref:`media-uploads`.
 *        .. _post-media-upload:
 */
-public function get_media_upload($expand=array()) {
-    return $this->get(sprintf("/media/upload/"), $expand=$expand);
+public function get_media_upload($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/media/upload/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -669,8 +669,8 @@ public function post_media_upload($data=array()) {
 * GET /orders/:id/
 *        Gets an :format:`order` by ID as the key ``order``.
 */
-public function get_order($id, $expand=array()) {
-    return $this->get(sprintf("/orders/%s/", $id), $expand=$expand);
+public function get_order($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/orders/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -699,8 +699,8 @@ public function post_organizers($data=array()) {
 * GET /organizers/:id/
 *        Gets an :format:`organizer` by ID as ``organizer``.
 */
-public function get_organizer($id, $expand=array()) {
-    return $this->get(sprintf("/organizers/%s/", $id), $expand=$expand);
+public function get_organizer($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/organizers/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -729,8 +729,8 @@ public function post_organizer($id, $data=array()) {
 * GET /organizers/:id/events/
 *        Gets events of the :format:`organizer`.
 */
-public function get_organizers_events($id, $expand=array()) {
-    return $this->get(sprintf("/organizers/%s/events/", $id), $expand=$expand);
+public function get_organizers_events($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/organizers/%s/events/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -743,8 +743,8 @@ public function get_organizers_events($id, $expand=array()) {
 *        error FIELD_UNKNOWN
 *        The refund request id provided is unknown
 */
-public function get_refund_request($id, $expand=array()) {
-    return $this->get(sprintf("/refund_requests/%s/", $id), $expand=$expand);
+public function get_refund_request($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/refund_requests/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -788,8 +788,8 @@ public function post_refund_requests($data=array()) {
 * GET /reports/sales/
 *        Returns a response of the aggregate sales data.
 */
-public function get_reports_sales($expand=array()) {
-    return $this->get(sprintf("/reports/sales/"), $expand=$expand);
+public function get_reports_sales($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/reports/sales/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -798,8 +798,8 @@ public function get_reports_sales($expand=array()) {
 * GET /reports/attendees/
 *        Returns a response of the aggregate attendees data.
 */
-public function get_reports_attendees($expand=array()) {
-    return $this->get(sprintf("/reports/attendees/"), $expand=$expand);
+public function get_reports_attendees($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/reports/attendees/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -809,8 +809,8 @@ public function get_reports_attendees($expand=array()) {
 *        Returns a :ref:`paginated <pagination>` response with a key of ``timezones``,
 *        containing a list of :format:`timezones <timezone>`.
 */
-public function get_system_timezones($expand=array()) {
-    return $this->get(sprintf("/system/timezones/"), $expand=$expand);
+public function get_system_timezones($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/system/timezones/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -820,8 +820,8 @@ public function get_system_timezones($expand=array()) {
 *        Returns a single page response with a key of ``regions``,
 *        containing a list of :format:`regions`.
 */
-public function get_system_regions($expand=array()) {
-    return $this->get(sprintf("/system/regions/"), $expand=$expand);
+public function get_system_regions($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/system/regions/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -831,8 +831,8 @@ public function get_system_regions($expand=array()) {
 *        Returns a single page response with a key of ``countries``,
 *        containing a list of :format:`countries`.
 */
-public function get_system_countries($expand=array()) {
-    return $this->get(sprintf("/system/countries/"), $expand=$expand);
+public function get_system_countries($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/system/countries/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -855,8 +855,8 @@ public function post_tracking_beacons($data=array()) {
 * GET /tracking_beacons/:tracking_beacons_id/
 *        Returns the :format:`tracking_beacon` with the specified :tracking_beacons_id.
 */
-public function get_tracking_beacon($tracking_beacons_id, $expand=array()) {
-    return $this->get(sprintf("/tracking_beacons/%s/", $tracking_beacons_id), $expand=$expand);
+public function get_tracking_beacon($tracking_beacons_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/tracking_beacons/%s/", $tracking_beacons_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -885,8 +885,8 @@ public function delete_tracking_beacon($tracking_beacons_id, $data=array()) {
 * GET /events/:event_id/tracking_beacons/
 *        Returns the list of :format:`tracking_beacon` for the event :event_id
 */
-public function get_event_tracking_beacons($event_id, $expand=array()) {
-    return $this->get(sprintf("/events/%s/tracking_beacons/", $event_id), $expand=$expand);
+public function get_event_tracking_beacons($event_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/events/%s/tracking_beacons/", $event_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -895,8 +895,8 @@ public function get_event_tracking_beacons($event_id, $expand=array()) {
 * GET /users/:user_id/tracking_beacons/
 *        Returns the list of :format:`tracking_beacon` for the user :user_id
 */
-public function get_user_tracking_beacons($user_id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/tracking_beacons/", $user_id), $expand=$expand);
+public function get_user_tracking_beacons($user_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/tracking_beacons/", $user_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -905,8 +905,8 @@ public function get_user_tracking_beacons($user_id, $expand=array()) {
 * GET /users/:id/
 *        Returns a :format:`user` for the specified user as ``user``. If you want to get details about the currently authenticated user, use ``/users/me/``.
 */
-public function get_user($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/", $id), $expand=$expand);
+public function get_user($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -918,8 +918,8 @@ public function get_user($id, $expand=array()) {
 *        :param datetime changed_since: (optional) Only return attendees changed on or after the time given.
 *        .. note:: A datetime represented as a string in ISO8601 combined date and time format, always in UTC.
 */
-public function get_user_orders($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/orders/", $id), $expand=$expand);
+public function get_user_orders($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/orders/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -928,8 +928,8 @@ public function get_user_orders($id, $expand=array()) {
 * GET /users/:id/organizers/
 *        Returns a :ref:`paginated <pagination>` response of :format:`organizer` objects that are owned by the user.
 */
-public function get_user_organizers($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/organizers/", $id), $expand=$expand);
+public function get_user_organizers($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/organizers/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -939,8 +939,8 @@ public function get_user_organizers($id, $expand=array()) {
 *        Returns a :ref:`paginated <pagination>` response of :format:`events <event>`, under
 *        the key ``events``, of all events the user owns (i.e. events they are organising)
 */
-public function get_user_owned_events($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/owned_events/", $id), $expand=$expand);
+public function get_user_owned_events($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/owned_events/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -949,8 +949,8 @@ public function get_user_owned_events($id, $expand=array()) {
 * GET /users/:id/events/
 *        Returns a :ref:`paginated <pagination>` response of :format:`events <event>`, under the key ``events``, of all events the user has access to
 */
-public function get_user_events($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/events/", $id), $expand=$expand);
+public function get_user_events($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/events/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -959,8 +959,8 @@ public function get_user_events($id, $expand=array()) {
 * GET /users/:id/venues/
 *        Returns a paginated response of :format:`venue` objects that are owned by the user.
 */
-public function get_user_venues($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/venues/", $id), $expand=$expand);
+public function get_user_venues($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/venues/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -971,8 +971,8 @@ public function get_user_venues($id, $expand=array()) {
 *        under the key ``attendees``, of attendees visiting any of the events the user owns
 *        (events that would be returned from ``/users/:id/owned_events/``)
 */
-public function get_user_owned_event_attendees($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/owned_event_attendees/", $id), $expand=$expand);
+public function get_user_owned_event_attendees($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/owned_event_attendees/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -983,8 +983,8 @@ public function get_user_owned_event_attendees($id, $expand=array()) {
 *        under the key ``orders``, of orders placed against any of the events the user owns
 *        (events that would be returned from ``/users/:id/owned_events/``)
 */
-public function get_user_owned_event_orders($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/owned_event_orders/", $id), $expand=$expand);
+public function get_user_owned_event_orders($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/owned_event_orders/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -994,8 +994,8 @@ public function get_user_owned_event_orders($id, $expand=array()) {
 *        Returns a list of :format:`contact_list` that the user owns as the key
 *        ``contact_lists``.
 */
-public function get_user_contact_lists($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/contact_lists/", $id), $expand=$expand);
+public function get_user_contact_lists($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/contact_lists/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1015,8 +1015,8 @@ public function post_user_contact_lists($id, $data=array()) {
 * GET /users/:id/contact_lists/:contact_list_id/
 *        Gets a user's :format:`contact_list` by ID as ``contact_list``.
 */
-public function get_user_contact_list($id, $contact_list_id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/contact_lists/%s/", $id, $contact_list_id), $expand=$expand);
+public function get_user_contact_list($id, $contact_list_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/contact_lists/%s/", $id, $contact_list_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1046,8 +1046,8 @@ public function delete_user_contact_list($id, $contact_list_id, $data=array()) {
 *        Returns the :format:`contacts <contact>` on the contact list
 *        as ``contacts``.
 */
-public function get_user_contact_lists_contacts($id, $contact_list_id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/contact_lists/%s/contacts/", $id, $contact_list_id), $expand=$expand);
+public function get_user_contact_lists_contacts($id, $contact_list_id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/contact_lists/%s/contacts/", $id, $contact_list_id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1082,8 +1082,8 @@ public function delete_user_contact_lists_contacts($id, $contact_list_id, $data=
 *        In order to update the saved events list, the user must unsave or save each event.
 *        A user is authorized to only see his/her saved events.
 */
-public function get_user_bookmarks($id, $expand=array()) {
-    return $this->get(sprintf("/users/%s/bookmarks/", $id), $expand=$expand);
+public function get_user_bookmarks($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/users/%s/bookmarks/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1118,8 +1118,8 @@ public function post_user_bookmarks_unsave($id, $data=array()) {
 * GET /venues/:id/
 *        Returns a :format:`venue` object.
 */
-public function get_venue($id, $expand=array()) {
-    return $this->get(sprintf("/venues/%s/", $id), $expand=$expand);
+public function get_venue($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/venues/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1150,8 +1150,8 @@ public function post_venues($data=array()) {
 *        Search for venues. Returns a list of venue objects.
 *        ..end-internal
 */
-public function get_venues_search($expand=array()) {
-    return $this->get(sprintf("/venues/search/"), $expand=$expand);
+public function get_venues_search($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/venues/search/"), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1160,8 +1160,8 @@ public function get_venues_search($expand=array()) {
 * GET /venues/:id/events/
 *        Returns events of a given :format:`venue`.
 */
-public function get_venues_events($id, $expand=array()) {
-    return $this->get(sprintf("/venues/%s/events/", $id), $expand=$expand);
+public function get_venues_events($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/venues/%s/events/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1170,8 +1170,8 @@ public function get_venues_events($id, $expand=array()) {
 * GET /webhooks/:id/
 *        Returns a :format:`webhook` for the specified webhook as ``webhook``.
 */
-public function get_webhook($id, $expand=array()) {
-    return $this->get(sprintf("/webhooks/%s/", $id), $expand=$expand);
+public function get_webhook($id, $expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/webhooks/%s/", $id), $expand=$expand, $query_params=$query_params);
 }
 
 
@@ -1190,8 +1190,8 @@ public function delete_webhook($id, $data=array()) {
 * GET /webhooks/
 *        Returns the list of :format:`webhook` objects that belong to the authenticated user.
 */
-public function get_webhooks($expand=array()) {
-    return $this->get(sprintf("/webhooks/"), $expand=$expand);
+public function get_webhooks($expand=array(), $query_params=array()) {
+    return $this->get(sprintf("/webhooks/"), $expand=$expand, $query_params=$query_params);
 }
 
 
