@@ -4,11 +4,11 @@ namespace Eventbrite;
 
 class Authenticate
 {
-    protected static $oauth_base = "https://www.eventbrite.com/oauth/";
+    const EVENTBRITE_OAUTH_BASE = "https://www.eventbrite.com/oauth/";
 
     public static function createAuthorizeUrl($client_key)
     {
-        return self::$oauth_base . 'authorize?response_type=code&client_id=' . $client_key;
+        return self::EVENTBRITE_OAUTH_BASE . 'authorize?response_type=code&client_id=' . $client_key;
     }
 
     public static function handshake($code, $client_secret, $app_key)
@@ -30,7 +30,7 @@ class Authenticate
             ]
         ];
 
-        $url = self::$oauth_base . 'token';
+        $url = self::EVENTBRITE_OAUTH_BASE . 'token';
 
         $context = stream_context_create($options);
 
