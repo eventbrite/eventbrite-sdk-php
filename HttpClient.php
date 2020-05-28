@@ -1,6 +1,6 @@
 <?php
 
-require_once('AccessMethods.php');
+namespace Eventbrite;
 
 /**
  * Http client used to perform requests on Eventbrite API.
