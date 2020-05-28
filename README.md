@@ -19,26 +19,26 @@ Clone the repo. Once this is public we can add version control and installation 
 
 The Eventbrite PHP SDK makes it easy to interact with the Eventbrite API:
 
-.. code-block:: php
-
-    php > require_once('HttpClient.php');
-    php > $client = new HttpClient('TOKEN');
-    php > $user = $client->get_user(1234567890);
-    php > $user['id'];
-    php > 1234567890
-    php > $user['name'];
-    php > Serena Williams
-
+```php
+    use Eventbrite\HttpClient;
+    ...
+    $client = new HttpClient('TOKEN');
+    $user = $client->get_user(1234567890);
+    $user['id'];
+    //1234567890
+    $user['name'];
+    //Serena Williams
+```
 You can also specify API endpoints manually:
 
-.. code-block:: php
+```php
 
-    php > $user = $client->get('/users/me/');
-    php > $user['id'];
-    1234567890
-    php > $user['name'];
-    php > Serena Williams
-
+    $user = $client->get('/users/me/');
+    $user['id'];
+    //1234567890
+    $user['name'];
+    //Serena Williams
+```
 Contributing
 ------------
 
