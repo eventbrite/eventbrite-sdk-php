@@ -21,7 +21,8 @@ The Eventbrite PHP SDK makes it easy to interact with the Eventbrite API:
 
 .. code-block:: php
 
-    php > require_once('HttpClient.php');
+    php > use Eventbrite\HttpClient;
+    php > ...
     php > $client = new HttpClient('TOKEN');
     php > $user = $client->get_user(1234567890);
     php > $user['id'];
