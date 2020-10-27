@@ -42,7 +42,7 @@ You can also specify API endpoints manually:
 Contributing
 ------------
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/eventbrite/eventbrite-sdk-python.
+Bug reports and pull requests are welcome on GitHub at https://github.com/eventbrite/eventbrite-sdk-php.
 
 
 License
